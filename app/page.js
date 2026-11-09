@@ -31,8 +31,8 @@ export default function Home() {
   }
 
   return (
-    <main className="session-wrapper">
-      <section className="session-card" aria-labelledby="page-title">
+    <main className="session-wrapper" aria-hidden="false">
+      <section className="session-card" role="dialog" aria-modal="true" aria-labelledby="page-title" tabIndex={-1}>
         <div className="session-icon" aria-hidden="true"><i className="bi bi-shield-lock-fill" /></div>
         <div className="session-badge">SECURITY TESTING DEMO</div>
         <h1 id="page-title">Submit a Test Message</h1>
