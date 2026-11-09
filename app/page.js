@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <main className="session-wrapper">
       <section className="session-card" aria-labelledby="page-title">
-        <div className="brand-mark" aria-hidden="true"><i className="bi bi-shield-lock-fill" /></div>
+        <div className="session-icon" aria-hidden="true"><i className="bi bi-shield-lock-fill" /></div>
         <div className="session-badge">SECURITY TESTING DEMO</div>
         <h1 id="page-title">Submit a Test Message</h1>
         <p className="session-description">
